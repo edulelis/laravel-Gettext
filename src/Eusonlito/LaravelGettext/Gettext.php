@@ -228,7 +228,8 @@ class Gettext
         $this->translator = (new Translator())->loadTranslations($translations);
 
         if ($this->config['functions']) {
-            Translator::initGettextFunctions($this->translator);
+            Translator::$current = $this->translator;
+            include_once __DIR__.'/translator_functions.php';
         }
     }
 
